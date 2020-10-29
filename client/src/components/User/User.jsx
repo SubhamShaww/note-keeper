@@ -12,8 +12,13 @@ function User(props) {
         }
     },[]); 
 
-    
-    return isLoggedIn ? (<div><CreateArea /><Notes /></div> ) : props.history.push('/');  
+    switch(isLoggedIn) {
+        case true: return (<div><CreateArea /><Notes /></div> );
+
+        case false: props.history.push('/');
+
+        default: return null;
+    } 
     
 }
 
