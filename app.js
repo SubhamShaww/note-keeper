@@ -5,7 +5,6 @@ const passport = require('passport');
 const cookieSession = require("cookie-session");
 
 const port = process.env.PORT || 5000;
-const reactUrl = 'http://localhost:3000';
 
 const app = express();
 

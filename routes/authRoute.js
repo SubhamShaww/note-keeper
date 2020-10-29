@@ -1,5 +1,4 @@
 const passport = require("passport");
-const reactUrl = "http://localhost:3000";
 
 module.exports = (app) => {
 
