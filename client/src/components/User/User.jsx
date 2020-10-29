@@ -10,7 +10,7 @@ function User(props) {
         if(props.user) {
             setIsLoggedIn(true);
         }
-    },[]); 
+    },[isLoggedIn]); 
 
     switch(isLoggedIn) {
         case true: return (<div><CreateArea /><Notes /></div> );
