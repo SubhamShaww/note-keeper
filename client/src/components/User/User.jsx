@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React from "react";
 import CreateArea from "./noteInput/CreateArea";
 import Notes from "./notes/Notes";
 import {connect} from "react-redux";
@@ -15,10 +15,8 @@ function User(props) {
           default: // when user is logged in
             return (
               <React.Fragment>
-                <div>
-                    <CreateArea />
-                    <Notes />
-                </div>
+                <CreateArea />
+                <Notes />
               </React.Fragment>
             )
         }
