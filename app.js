@@ -17,6 +17,9 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopolo
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
+const Note = mongoose.model('Note');  
+const User = mongoose.model('User');
+
 require("./models/User");
 require("./services/passport");
 
@@ -32,6 +35,8 @@ app.use(passport.session());
 
 require("./routes/authRoute")(app);
 // require("./routes/notesRoute")(app);
+
+
 
 app.get("/notes", (req, res) => {
   User.findOne({_id: req.user._id}, (err, foundUser) => {
