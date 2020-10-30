@@ -3,24 +3,28 @@ import CreateArea from "./noteInput/CreateArea";
 import Notes from "./notes/Notes";
 import {connect} from "react-redux";
 
-function User(props) {
-
-    const getNotes = () => {
-        useEffect(() => {
-            if(props.user) {
-                return (
-                    <div>
-                        <CreateArea />
-                        <Notes />
-                    </div>
-                );
-            } else {
-                return <div></div>;
-            } 
-        },[]);
-    } 
+function User(props) { 
     
-    return <div>{getNotes}</div>
+    const renderContent = () => {
+        switch(props.user){
+          case null: // when not connected to server
+            return ;
+          case false: // when user is not logged in
+            props.history.push('/');
+          
+          default: // when user is logged in
+            return (
+              <React.Fragment>
+                <div>
+                    <CreateArea />
+                    <Notes />
+                </div>
+              </React.Fragment>
+            )
+        }
+      }
+
+    return <div>{renderContent()}</div>
 }
 
 const mapStateToProps = (state) => {
