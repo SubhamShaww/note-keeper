@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import Note from "./Note";
+import axios from "axios";
 
 function Notes() {
     const [notes, setNotes] = useState([]);
 
-    fetch('/notes')
-        .then(res1 => res1.json())
+    axios.get('/notes')
         .then((res) => {
             setNotes(res.data);
         })

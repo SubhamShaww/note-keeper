@@ -1,10 +1,11 @@
 // Action creator
 
+import axios from 'axios';
+
 export const fetchUserAction = () => {
     return (dispatch) => {
 
-        fetch('/api/currentUser')
-        .then(res1 => res1.json())
+        axios.get('/api/currentUser')
         .then((res) => {
             console.log('in myAction.js', res.data);
             dispatch({type: 'GET_USER', payload: res.data});
