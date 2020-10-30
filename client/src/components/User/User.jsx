@@ -3,23 +3,30 @@ import CreateArea from "./noteInput/CreateArea";
 import Notes from "./notes/Notes";
 import {connect} from "react-redux";
 
-function User(props) {
+function User(props) { 
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if(props.user) {
             setIsLoggedIn(true);
         }
-    },[isLoggedIn]); 
+    },[isLoggedIn]);
 
-    switch(isLoggedIn) {
-        case true: return (<div><CreateArea /><Notes /></div> );
-
-        case false: props.history.push('/');
-
-        default: return null;
+    const getNotes = () => {
+        if(isLoggedIn) {
+            return (
+                <div>
+                    <CreateArea />
+                    <Notes />
+                </div>
+            );
+        } else {
+            return <div></div>;
+        }
     } 
     
+    return <div>{getNotes}</div>
 }
 
 const mapStateToProps = (state) => {
