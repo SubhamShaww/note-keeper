@@ -1,10 +1,6 @@
 //for fetching the already defined model( here schema is not included )
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.set('useCreateIndex', true);
-mongoose.set('useFindAndModify', false);
-
 const Note = mongoose.model('Note');  
 const User = mongoose.model('User');
 

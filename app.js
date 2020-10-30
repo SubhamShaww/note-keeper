@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const cookieSession = require("cookie-session");
+const mongoose = require('mongoose');
 
 const port = process.env.PORT || 5000;
 
@@ -12,6 +13,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
 require("./models/User");
 require("./services/passport");
